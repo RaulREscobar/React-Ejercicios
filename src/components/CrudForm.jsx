@@ -6,14 +6,37 @@ const initialForm = {
   id: null,
 }
 
-const CrudForm = () => {
+const CrudForm = ({ createData, updateData, dataToEdit, setDataToEdit }) => {
   const [form, setForm] = useState(initialForm)
 
-  const handleChange = () => { };
+  const handleChange = (e) => {
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value,
+    });
+  };
 
-  const handleSubmit = () => { };
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  const handleReset = () => { };
+    if (!form.name || !form.constellation) {
+      alert("Datos incompletos");
+      return;
+    }
+
+    if (form.id === null) {
+      createData(form);
+    } else {
+      updateData(form);
+    }
+    handleReset();
+
+  };
+
+  const handleReset = (e) => {
+    setForm(initialForm);
+    setDataToEdit(null)
+  };
 
   return (
     <div>
@@ -27,7 +50,7 @@ const CrudForm = () => {
         />
 
         <input type="text"
-          name='contellation'
+          name='constellation'
           placeholder='Constelación'
           onChange={handleChange}
           value={form.constellation}
