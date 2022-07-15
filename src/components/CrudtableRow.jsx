@@ -1,11 +1,15 @@
 import React from 'react'
 
-const CrudtableRow = ({ el }) => {
+const CrudtableRow = ({ el, setDataToEdit, deleteData }) => {
+    let { name, constellation, id } = el;
     return (
         <tr>
             <td>{el.name}</td>
             <td>{el.constellation}</td>
-            <td><button>Editar</button><button>Eliminar</button></td>
+            <td>
+                <button onClick={() => setDataToEdit(el)}>Editar</button>
+                <button onClick={() => deleteData(id)}>Eliminar</button>
+            </td>
         </tr>
     )
 }
