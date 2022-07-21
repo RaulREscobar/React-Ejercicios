@@ -14,18 +14,18 @@ const CrudTable = ({ data, setDataToEdit, deleteData }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {data.lengt === 0 ?
-                        <tr>
+                    {data.length === 0 ?
+                       ( <tr>
                             <td colSpan="3">Sin datos</td>
-                        </tr>
+                        </tr>)
                         :
-                        data.map((el) =>
+                        (data.map((el) =>
                             <CrudtableRow
                                 key={el.id}
                                 el={el}
                                 setDataToEdit={setDataToEdit}
                                 deleteData={deleteData}
-                            />)
+                            />))
                     }
                 </tbody>
             </table>

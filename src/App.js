@@ -7,7 +7,7 @@ function App() {
     <>
       <h1>Ejercicios con React</h1>
       <hr />
-      <CrudApi />-
+      <CrudApi />
       <hr />
       <CrudApp />
       <hr />
